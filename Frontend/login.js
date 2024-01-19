@@ -5,7 +5,13 @@ async function login(event) {
     mail: document.getElementById("mail").value,
     password: document.getElementById("password").value,
   };
-  console.log("-->", obj);
-  const response = await axios.post("http://localhost:3000/user/login", obj);
-  console.log(response);
+  try {
+    const response = await axios.post("http://localhost:3000/user/login", obj);
+    if (response.status == 201) {
+      alert(response.data.message);
+    }
+    console.log("Token-> ", response.data.token);
+  } catch (error) {
+    alert(error.response.data.message);
+  }
 }
