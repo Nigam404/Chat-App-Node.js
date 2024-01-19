@@ -8,7 +8,11 @@ const userRouter = require("./router/userR");
 const app = express();
 
 //middlewares
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 

@@ -7,10 +7,14 @@ async function signup(event) {
     phone: document.getElementById("phone").value,
     password: document.getElementById("password").value,
   };
-  console.log(obj);
   const responseUser = await axios.post(
     "http://localhost:3000/user/signup",
     obj
   );
+  if (responseUser.status === 201) {
+    alert("Successfully Signed Up !");
+  } else {
+    alert("User Already Exist, Please Login !");
+  }
   console.log(responseUser.data);
 }

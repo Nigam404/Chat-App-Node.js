@@ -4,7 +4,7 @@ const User = require("../model/userM");
 exports.signup = async (req, res, next) => {
   const response = await User.findOne({ where: { mail: req.body.mail } });
   if (response) {
-    res.status(400).json({ message: "User exist" });
+    res.json({ message: "User exist" });
   } else {
     const plainTextPassword = req.body.password;
     const saltRound = 10;
