@@ -56,3 +56,9 @@ exports.login = async (req, res, next) => {
     res.status(404).json({ message: "User Not Found" });
   }
 };
+
+//..........................................................................................
+exports.getAllUser = async (req, res, next) => {
+  const user = await User.findAll();
+  res.json(user);
+};

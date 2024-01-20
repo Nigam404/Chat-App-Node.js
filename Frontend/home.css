@@ -6,10 +6,9 @@ h2{
     
 }
 body{
-    background-color: antiquewhite;
-    background-image:url(./background.jpg);
-    background-size:cover ;
-    background-repeat: repeat-y;
+ 
+    background: linear-gradient(to right, #ff3399 0%, #9900ff 100%);
+   
 }
 #messages{
     margin-left: 10%;
@@ -40,8 +39,8 @@ p:nth-child(odd){
 }
 #footer{
     
-    bottom: 0;
-    position: absolute;
+    bottom:0;
+    position: relative;
     color: white;
 
 }

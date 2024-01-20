@@ -10,4 +10,6 @@ router.post(
   messageController.saveMsg
 );
 
+router.get("/message/getmsg",messageController.getMsg);
+
 module.exports = router;
