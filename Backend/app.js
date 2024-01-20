@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const sequelize = require("./utils/database");
 const userRouter = require("./router/userR");
+const messageRouter = require("./router/messageR");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(bodyparser.urlencoded({ extended: false }));
 
 //routes
 app.use(userRouter);
+app.use(messageRouter);
 
 //server
 sequelize

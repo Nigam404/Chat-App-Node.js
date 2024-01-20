@@ -11,6 +11,9 @@ async function login(event) {
       alert(response.data.message);
     }
     console.log("Token-> ", response.data.token);
+    //saving token in LS
+    localStorage.setItem("ChatToken", response.data.token);
+    location.replace("home.html");
   } catch (error) {
     alert(error.response.data.message);
   }
