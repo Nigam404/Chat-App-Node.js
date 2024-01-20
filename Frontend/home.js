@@ -42,3 +42,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     createMsgElement(element);
   });
 });
+
+//MAKING CHAT APP REALTIME-CONTINUOUSLY CALLING BACKEND API TO GET NEW MESSAGES....................
+setInterval(async () => {
+  document.getElementById("messages").innerHTML = "";
+  //fetching all messages
+  const messages = await axios.get("http://localhost:3000/message/getmsg");
+  //creating UI element for message
+  messages.data.forEach((element) => {
+    createMsgElement(element);
+  });
+}, 10000);
