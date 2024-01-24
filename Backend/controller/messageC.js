@@ -1,24 +1,35 @@
 const Message = require("../model/messageM");
 const User = require("../model/userM");
+const Group = require("../model/groupM");
 
 //............................................................................................
 exports.saveMsg = async (req, res, next) => {
   console.log("Inside saveMsg-User Id->", req.USERID);
+  console.log("Inside saveMsg-group Id->", req.params.GROUPID);
+
   //getting username through userid.
   const user = await User.findByPk(req.USERID);
+  const group = await Group.findByPk(req.params.GROUPID);
 
-  //creating row in DB
-  const response = await Message.create({
+  //adding message to message table using sequelize associations.(user & message)
+  const msg = await user.createMessage({
     message: req.body.message,
-    userId: req.USERID,
-    userName: user.name,
+    username: user.name,
   });
-  res.status(201).json(response);
+
+  //adding message to group table using sequelize associations.(group & message)
+  await group.addMessage(msg);
+  // console.log(await user.getMessages());
+  res.status(201).json(msg);
+  //..continue from here...
 };
 
 //...........................................................................................
 exports.getMsg = async (req, res, next) => {
-  const message = await Message.findAll();
+  const group = await Group.findByPk(req.params.GROUPID);
+
+  //using sequelize associations
+  const message = await group.getMessages();
   if (message.length > 0) {
     res.status(200).json(message);
   } else {

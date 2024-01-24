@@ -5,11 +5,11 @@ const userAuthentication = require("../middleware/authentication");
 const messageController = require("../controller/messageC");
 
 router.post(
-  "/message/save",
+  "/message/save/:GROUPID",
   userAuthentication.authenticate,
   messageController.saveMsg
 );
 
-router.get("/message/getmsg",messageController.getMsg);
+router.get("/message/getmsg/:GROUPID", messageController.getMsg);
 
 module.exports = router;

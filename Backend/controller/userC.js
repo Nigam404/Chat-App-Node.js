@@ -62,3 +62,9 @@ exports.getAllUser = async (req, res, next) => {
   const user = await User.findAll();
   res.json(user);
 };
+
+//..........................................................................................
+exports.getCurrentUser = async (req, res, next) => {
+  const user = await User.findByPk(req.USERID);
+  res.json(user);
+};

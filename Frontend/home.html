@@ -6,19 +6,42 @@
     <title>Chat App</title>
   </head>
   <body>
-    <h2>Chat App</h2>
-    <!-- div for showing messages on UI -->
-    <div id="messages"></div>
-    <div class="input-group mb-3" id="footer">
+    <h2><b>* Chat App *</b><b style="color: black" id="heading"></b></h2>
+
+    <hr />
+    <!-- div for group and message section -->
+    <div id="container">
+      <!-- Group -->
+      <div id="div-group">
+        <button type="button" id="creategroup">Create Group</button>
+        <ul id="groups"></ul>
+      </div>
+
+      <!-- div for showing messages on UI -->
+      <div id="messages">
+        <div id="group-header"></div>
+        <div id="content"></div>
+      </div>
+
+      <!-- div for showing members of group -->
+      <div id="members" style="visibility: hidden">
+        Members<br />
+        <select id="member">
+          <option selected>Add Member</option>
+        </select>
+        <button type="button" id="addmember">Add</button>
+        <div id="addedmember"></div>
+      </div>
+    </div>
+
+    <div class="input-group mb-3" id="footer" style="visibility: hidden">
       <input
         type="text"
         class="form-control"
         id="msg"
         placeholder="type your message...."
       />
-      <button type="button" class="btn" id="sendmsg" onclick="sendMessage()">
-        Send
-      </button>
+      <button type="button" class="btn" id="sendmsg">Send</button>
     </div>
     <!-- bootstrap cdn -->
     <link
