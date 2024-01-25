@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../utils/database");
 
-const Group = sequelize.define(
-  "group",
+const Usergroup = sequelize.define(
+  "usergroup",
   {
     id: {
       type: Sequelize.INTEGER,
@@ -10,14 +10,11 @@ const Group = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    name: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
+    admin: Sequelize.BOOLEAN,
   },
   {
     timestamps: false,
   }
 );
 
-module.exports = Group;
+module.exports = Usergroup;

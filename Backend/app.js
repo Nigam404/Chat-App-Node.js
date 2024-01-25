@@ -10,6 +10,7 @@ const groupRouter = require("./router/groupR");
 const User = require("./model/userM");
 const Message = require("./model/messageM");
 const Group = require("./model/groupM");
+const Usergroup = require("./model/usergroupM");
 
 const app = express();
 
@@ -34,9 +35,8 @@ Message.belongsTo(User);
 Group.hasMany(Message);
 Message.belongsTo(Group);
 
-
-User.belongsToMany(Group, { through: "UserGroup" });
-Group.belongsToMany(User, { through: "UserGroup" });
+User.belongsToMany(Group, { through: Usergroup });
+Group.belongsToMany(User, { through: Usergroup });
 
 //server
 sequelize

@@ -4,9 +4,6 @@ const Group = require("../model/groupM");
 
 //............................................................................................
 exports.saveMsg = async (req, res, next) => {
-  console.log("Inside saveMsg-User Id->", req.USERID);
-  console.log("Inside saveMsg-group Id->", req.params.GROUPID);
-
   //getting username through userid.
   const user = await User.findByPk(req.USERID);
   const group = await Group.findByPk(req.params.GROUPID);
